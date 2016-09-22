@@ -3,17 +3,16 @@
 
 Docker image to build and run the SIPI (Simple Image Presentation Interface ) Server: https://github.com/dhlab-basel/Sipi
 
-#### Image tags
---------------------
-  - latest [Dockerfile](https://github.com/subotic/docker-sipi/tree/master/latest/Dockerfile)
-
 #### Usage
 ---------------
 
-To run the image and bind to port :
+To build an image and run a container:
 
 ````
-docker run -d -p 8080:8080 subotic/sipi
+$ git clone https://github.com/dhlab-basel/docker-sipi
+(copy the Kakadu distribution ``v7_8-01382N.zip`` to the ``docker-sipi`` directory)
+$ docker build -t dhlabbasel/sipi
+$ docker run --name sipi --rm -it -p 1024:1024 dhlabbasel/sipi
 ````
 
 #### Sources
