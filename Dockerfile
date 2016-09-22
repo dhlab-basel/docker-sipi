@@ -3,24 +3,22 @@ FROM dhlabbasel/sipi-base:14.04
 
 MAINTAINER Ivan Subotic <ivan.subotic@unibas.ch>
 
-WORKDIR /usr/src/sipi
+WORKDIR /sipi
 
 # Clone repository
-RUN git clone https://github.com/dhlab-basel/Sipi.git /usr/src/sipi
+RUN git clone https://github.com/dhlab-basel/Sipi.git /sipi
 
 # Add Kakadu. Needs to be provided by the user!
-COPY ./v7_8-01382N.zip /usr/src/sipi/vendor 
+COPY ./v7_8-01382N.zip /sipi/vendor 
 
-# Compile and install SIPI from source
+# Compile and install SIPI from source, and clean-up afterwars
 RUN cd build && \
     cmake .. && \
-    make install
-
-# Clean up; Removing Kakadu distribution and other intermediary files
-RUN rm -rf /usr/local/src/vendor && \
-    rm -rf /usr/local/src/build && \
-    rm -rf /usr/local/src/extsrcs
+    make install && \
+    rm -rf /sipi/vendor && \
+    rm -rf /sipi/build && \
+    rm -rf /sipi/extsrcs
 
 EXPOSE 1024
 
-CMD ["/usr/local/src/local/bin/sipi", "-config sipi.knora-test-config.lua"]
+CMD ["/sipi/local/bin/sipi", "-config", "/sipi/config/sipi.knora-test-config.lua"]
