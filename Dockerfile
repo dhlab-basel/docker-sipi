@@ -9,7 +9,7 @@ WORKDIR /sipi
 RUN git clone https://github.com/dhlab-basel/Sipi.git /sipi
 
 # Add Kakadu. Needs to be provided by the user!
-COPY ./v7_8-01382N.zip /sipi/vendor 
+COPY ./v7_8-01382N.zip /sipi/vendor
 
 # Compile and install SIPI from source, and clean-up afterwars
 RUN cd build && \
@@ -17,7 +17,8 @@ RUN cd build && \
     make install && \
     rm -rf /sipi/vendor && \
     rm -rf /sipi/build && \
-    rm -rf /sipi/extsrcs
+    rm -rf /sipi/extsrcs && \
+    sed -i -e 's/localhost/dockerhost/' /sipi/config/sipi.knora-test-config.lua 
 
 EXPOSE 1024
 
