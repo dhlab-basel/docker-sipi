@@ -1,5 +1,5 @@
 # Pull sipi-base image containing all needed libraries
-FROM dhlabbasel/sipi-base:14.04
+FROM dhlabbasel/sipi-base:16.04
 
 MAINTAINER Ivan Subotic <ivan.subotic@unibas.ch>
 
