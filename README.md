@@ -15,7 +15,7 @@ it to the docker hub, follow the following steps:
 ```
 $ git clone https://github.com/dhlab-basel/docker-sipi
 (copy the Kakadu distribution ``v7_8-01382N.zip`` to the ``docker-sipi`` directory)
-$ docker build -t dhlabbasel/sipi
+$ docker build -t dhlabbasel/sipi .
 (run a container with the newly build image and do some tests)
 $ docker run --name sipi --rm -it --add-host=dockerhost:$(ip route | awk '/docker0/ { print $NF }') -p 1024:1024 dhlabbasel/sipi
 (Ctrl-c out of terminal will stop and delete container)
